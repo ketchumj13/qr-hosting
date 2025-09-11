@@ -1,0 +1,383 @@
+:root {
+    --primary-color: #0066cc;
+    --primary-dark: #0052a3;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+
+    --text-color: #212529;
+    --text-muted: #6c757d;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --border-color: #dee2e6;
+
+    --microsoft-red: #f25022;
+    --microsoft-green: #7fba00;
+    --microsoft-blue: #00a4ef;
+    --microsoft-yellow: #ffb900;
+
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+    --transition: all 0.2s ease-in-out;
+    --transition-slow: all 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: 16px;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+}
+
+.redirect-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xxl);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.redirect-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+}
+
+.logo svg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.brand-logo {
+    margin-bottom: var(--spacing-lg);
+}
+
+.microsoft-logo {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.logo-square {
+    width: 28px;
+    height: 28px;
+    margin: 2px;
+}
+
+.logo-square.red { background-color: var(--microsoft-red); }
+.logo-square.green { background-color: var(--microsoft-green); }
+.logo-square.blue { background-color: var(--microsoft-blue); }
+.logo-square.yellow { background-color: var(--microsoft-yellow); }
+
+.business-logo {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xl);
+}
+
+.loading-spinner {
+    margin: var(--spacing-xl) 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+.microsoft-spinner {
+    border-top-color: var(--microsoft-blue);
+}
+
+.business-spinner {
+    border-top-color: var(--success-color);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.redirect-info,
+.error-info {
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item .icon {
+    margin-right: var(--spacing-sm);
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.info-item .text {
+    flex: 1;
+    text-align: left;
+}
+
+.manual-links {
+    margin-top: var(--spacing-xl);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 140px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.microsoft-btn {
+    background: linear-gradient(45deg, var(--microsoft-blue), var(--microsoft-green));
+}
+
+.microsoft-btn:hover {
+    background: linear-gradient(45deg, #0084d4, #6ba700);
+}
+
+.business-btn {
+    background-color: var(--success-color);
+}
+
+.business-btn:hover {
+    background-color: #218838;
+}
+
+.footer {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.error-page .container {
+    background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
+}
+
+.error-card {
+    border-left: 4px solid var(--danger-color);
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.7;
+}
+
+code {
+    background-color: var(--background-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    color: var(--danger-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    .redirect-card {
+        padding: var(--spacing-xl);
+        margin: var(--spacing-sm);
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .manual-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .microsoft-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-square {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.campaign-msft .redirect-card::before {
+    background: linear-gradient(90deg, var(--microsoft-blue), var(--microsoft-green));
+}
+
+.campaign-business .redirect-card::before {
+    background: linear-gradient(90deg, var(--success-color), var(--info-color));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner {
+        animation: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
+
+@media print {
+    .container {
+        background: white;
+        color: black;
+    }
+
+    .redirect-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .loading-spinner,
+    .manual-links {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #e9ecef;
+        --text-muted: #adb5bd;
+        --background-color: #212529;
+        --card-background: #343a40;
+        --border-color: #495057;
+    }
+
+    .container {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+
+    .footer {
+        color: rgba(255, 255, 255, 0.7);
+    }
+}

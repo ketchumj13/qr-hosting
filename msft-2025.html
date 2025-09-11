@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="2; url=https://accionlabs.com/microsoft-event?utm_source=msft_booth&utm_medium=qr&utm_campaign=2025">
+    <title>Microsoft Event 2025 - Redirecting...</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body class="redirect-page campaign-msft">
+    <div class="container">
+        <div class="redirect-card">
+            <div class="brand-logo">
+                <div class="microsoft-logo">
+                    <div class="logo-square red"></div>
+                    <div class="logo-square green"></div>
+                    <div class="logo-square blue"></div>
+                    <div class="logo-square yellow"></div>
+                </div>
+            </div>
+
+            <h1 class="title">Microsoft Event 2025</h1>
+            <p class="subtitle">Taking you to the event information page...</p>
+
+            <div class="loading-spinner">
+                <div class="spinner microsoft-spinner"></div>
+            </div>
+
+            <div class="redirect-info">
+                <div class="info-item">
+                    <span class="icon">🎯</span>
+                    <span class="text">Destination: Microsoft Event Portal</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📊</span>
+                    <span class="text">Source: Microsoft Booth QR Code</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">⏱️</span>
+                    <span class="text">Redirect in: <span id="countdown">2</span>s</span>
+                </div>
+            </div>
+
+            <div class="manual-links">
+                <a href="https://accionlabs.com/microsoft-event?utm_source=msft_booth&utm_medium=qr&utm_campaign=2025" 
+                   class="btn btn-primary microsoft-btn">
+                    🚀 Continue to Event
+                </a>
+                <a href="./" class="btn btn-secondary">
+                    ← Back to QR System
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>QR Code ID: <code>msft-2025</code> • Campaign: <strong>Microsoft Event 2025</strong></p>
+        </footer>
+    </div>
+
+    <script src="assets/js/analytics.js"></script>
+    <script>
+        // Countdown and redirect
+        let countdown = 2;
+        const countdownElement = document.getElementById('countdown');
+        const destinationUrl = 'https://accionlabs.com/microsoft-event?utm_source=msft_booth&utm_medium=qr&utm_campaign=2025';
+
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = destinationUrl;
+            }
+        }, 1000);
+
+        // Track the campaign access
+        if (typeof trackEvent !== 'undefined') {
+            trackEvent('campaign_access', 'msft-2025', {
+                campaign: 'Microsoft Event 2025',
+                source: 'msft_booth',
+                medium: 'qr',
+                timestamp: new Date().toISOString(),
+                user_agent: navigator.userAgent,
+                referrer: document.referrer,
+                destination: destinationUrl
+            });
+        }
+
+        // Fallback redirect (in case meta refresh fails)
+        setTimeout(() => {
+            if (window.location.href !== destinationUrl) {
+                window.location.href = destinationUrl;
+            }
+        }, 2500);
+    </script>
+</body>
+</html>

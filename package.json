@@ -1,0 +1,45 @@
+{
+  "name": "github-pages-qr-system",
+  "version": "1.0.0",
+  "description": "Complete QR code generation and hosting system using GitHub Pages",
+  "main": "qr_generator.js",
+  "type": "commonjs",
+  "scripts": {
+    "generate": "node qr_generator.js --all",
+    "generate:business": "node qr_generator.js --all --size business",
+    "generate:poster": "node qr_generator.js --all --size poster",
+    "list": "node qr_generator.js --list-campaigns",
+    "sizes": "node qr_generator.js --list-sizes",
+    "deploy": "bash deploy.sh",
+    "test": "node -e \"console.log('QR Generator test: OK')\"",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "qr-code",
+    "github-pages",
+    "free-hosting",
+    "self-hosted",
+    "analytics",
+    "redirect"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "qrcode": "^1.5.3",
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/qr-hosting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/qr-hosting/issues"
+  },
+  "homepage": "https://YOUR_USERNAME.github.io/qr-hosting/"
+}

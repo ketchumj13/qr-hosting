@@ -1,0 +1,60 @@
+# GitHub Pages QR Code System Configuration
+title: "QR Code Redirect System"
+description: "Professional self-hosted QR code generation and tracking system"
+baseurl: "" # Subpath of your site, e.g. /qr-hosting
+url: "https://YOUR_USERNAME.github.io" # Base hostname & protocol
+
+# GitHub Pages settings
+github: [metadata]
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-readme-index
+  - jekyll-optional-front-matter
+  - jekyll-default-layout
+
+# Exclude files from processing
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - qr_generator.py
+  - qr_generator.js
+  - deploy.sh
+  - README.md
+  - LICENSE
+
+# Include files that start with dot
+include:
+  - .htaccess
+  - .nojekyll
+
+# Collections (optional - for advanced usage)
+collections:
+  campaigns:
+    output: true
+    permalink: /:name/
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# SEO settings
+author: "Your Name"
+twitter:
+  username: YOUR_TWITTER
+social:
+  name: "Your Name"
+  links:
+    - "https://twitter.com/YOUR_TWITTER"
+    - "https://github.com/YOUR_USERNAME"
+
+# Analytics (configure these in assets/js/analytics.js)
+google_analytics: # Your GA4 ID
+plausible: # Your domain for Plausible

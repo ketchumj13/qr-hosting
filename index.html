@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5; url=https://github.com/YOUR_USERNAME/qr-hosting">
+    <title>QR Code Management System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="QR Code Management System">
+    <meta property="og:description" content="Professional self-hosted QR code generation and tracking">
+</head>
+<body class="redirect-page">
+    <div class="container">
+        <div class="redirect-card">
+            <div class="logo">
+                <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="15" fill="#0066cc"/>
+                    <rect x="20" y="20" width="15" height="15" fill="white"/>
+                    <rect x="20" y="40" width="15" height="15" fill="white"/>
+                    <rect x="20" y="65" width="15" height="15" fill="white"/>
+                    <rect x="45" y="20" width="15" height="15" fill="white"/>
+                    <rect x="65" y="20" width="15" height="15" fill="white"/>
+                    <rect x="45" y="45" width="35" height="15" fill="white"/>
+                    <rect x="65" y="65" width="15" height="15" fill="white"/>
+                </svg>
+            </div>
+
+            <h1 class="title">QR Code Management System</h1>
+            <p class="subtitle">Professional self-hosted QR code generation and tracking</p>
+
+            <div class="system-features">
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <span class="feature-text">Interactive QR Generator</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <span class="feature-text">Analytics Dashboard</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📋</span>
+                    <span class="feature-text">Campaign Management</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💰</span>
+                    <span class="feature-text">$0 Forever</span>
+                </div>
+            </div>
+
+            <div class="manual-links">
+                <a href="./dashboard.html" class="btn btn-primary">
+                    🚀 Open Dashboard
+                </a>
+                <a href="https://github.com/YOUR_USERNAME/qr-hosting" class="btn btn-secondary">
+                    📁 View Source
+                </a>
+            </div>
+
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+
+            <p class="redirect-message">
+                Auto-redirecting to repository in <span id="countdown">5</span> seconds...
+                <br><small>Or use the dashboard above for QR management</small>
+            </p>
+
+            <div id="campaigns-list" class="campaigns-list">
+                <h3>Available Campaigns:</h3>
+                <ul>
+                    <li><a href="./msft-2025">Microsoft Event 2025</a></li>
+                    <li><a href="./business-cards">Business Cards</a></li>
+                </ul>
+                <p class="campaigns-note">
+                    <small>✨ Create and manage more campaigns in the <a href="./dashboard.html">Dashboard</a></small>
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>
+                Powered by <strong>GitHub Pages</strong> • 
+                <a href="./dashboard.html">Dashboard</a> • 
+                <a href="https://github.com/YOUR_USERNAME/qr-hosting">Source Code</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="assets/js/analytics.js"></script>
+    <script>
+        // Countdown timer with dashboard promotion
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = 'https://github.com/YOUR_USERNAME/qr-hosting';
+            }
+        }, 1000);
+
+        // Log default page access
+        if (typeof trackEvent !== 'undefined') {
+            trackEvent('page_view', 'index', { 
+                timestamp: new Date().toISOString(),
+                user_agent: navigator.userAgent,
+                referrer: document.referrer,
+                has_dashboard: true
+            });
+        }
+    </script>
+
+    <style>
+        .system-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--color-bg-1);
+            border-radius: var(--border-radius);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-icon {
+            font-size: 1.2rem;
+        }
+
+        .feature-text {
+            font-weight: 500;
+        }
+
+        .campaigns-list {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .campaigns-list h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .campaigns-list ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .campaigns-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .campaigns-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .campaigns-list a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .campaigns-note {
+            text-align: center;
+            margin: 0;
+        }
+
+        .campaigns-note a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .system-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

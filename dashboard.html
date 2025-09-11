@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Management Dashboard</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-brand">
+                    <h1>QR Management Dashboard</h1>
+                    <span class="version">v1.0</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn--outline btn--sm" id="themeToggle" title="Toggle theme">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <button class="btn btn--outline btn--sm" onclick="window.open('https://github.com/YOUR_USERNAME/qr-hosting', '_blank')" title="View source">
+                        📁 Source
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="generator">
+                <span class="tab-icon">🎯</span>
+                <span class="tab-text">QR Generator</span>
+            </button>
+            <button class="tab-btn" data-tab="campaigns">
+                <span class="tab-icon">📋</span>
+                <span class="tab-text">Campaigns</span>
+            </button>
+            <button class="tab-btn" data-tab="analytics">
+                <span class="tab-icon">📊</span>
+                <span class="tab-text">Analytics</span>
+            </button>
+            <button class="tab-btn" data-tab="files">
+                <span class="tab-icon">📁</span>
+                <span class="tab-text">Files</span>
+            </button>
+            <button class="tab-btn" data-tab="settings">
+                <span class="tab-icon">⚙️</span>
+                <span class="tab-text">Settings</span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- QR Generator Tab -->
+            <section class="tab-content active" id="generator">
+                <div class="content-grid">
+                    <div class="generator-panel">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Generate QR Code</h3>
+                                <p class="card__subtitle">Create professional QR codes with real-time preview</p>
+                            </div>
+                            <div class="card__body">
+                                <form class="qr-form" id="qrForm">
+                                    <div class="form-group">
+                                        <label class="form-label" for="qrUrl">URL or Data *</label>
+                                        <input type="url" id="qrUrl" class="form-control" placeholder="https://go.yourdomain.com/campaign" required>
+                                        <small class="form-help">Enter the URL you want the QR code to redirect to</small>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label" for="qrSize">Size Preset</label>
+                                            <select id="qrSize" class="form-control">
+                                                <option value="200">Business Card (200px)</option>
+                                                <option value="300">Flyer (300px)</option>
+                                                <option value="400" selected>Digital (400px)</option>
+                                                <option value="500">Poster (500px)</option>
+                                                <option value="750">Signage (750px)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label" for="errorLevel">Error Correction</label>
+                                            <select id="errorLevel" class="form-control">
+                                                <option value="L">Low (~7%)</option>
+                                                <option value="M">Medium (~15%)</option>
+                                                <option value="Q" selected>Quartile (~25%) ✨</option>
+                                                <option value="H">High (~30%)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label" for="foregroundColor">Foreground Color</label>
+                                            <input type="color" id="foregroundColor" class="form-control color-picker" value="#000000">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label" for="backgroundColor">Background Color</label>
+                                            <input type="color" id="backgroundColor" class="form-control color-picker" value="#ffffff">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="qrBorder">Border Size</label>
+                                        <div class="range-input">
+                                            <input type="range" id="qrBorder" min="1" max="8" value="4" class="form-range">
+                                            <span class="range-value" id="borderValue">4</span>
+                                        </div>
+                                        <small class="form-help">Minimum 4 modules recommended for reliable scanning</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="campaignName">Campaign Name (Optional)</label>
+                                        <input type="text" id="campaignName" class="form-control" placeholder="my-campaign">
+                                        <small class="form-help">Used for file naming and organization</small>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-panel">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Live Preview</h3>
+                                <div class="preview-actions">
+                                    <button class="btn btn--sm" onclick="refreshPreview()">🔄 Refresh</button>
+                                </div>
+                            </div>
+                            <div class="card__body">
+                                <div class="qr-preview">
+                                    <canvas id="qrCanvas" width="400" height="400"></canvas>
+                                    <div class="preview-info">
+                                        <div class="info-item">
+                                            <span class="info-label">Size:</span>
+                                            <span class="info-value" id="previewSize">400x400px</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Error Level:</span>  
+                                            <span class="info-value" id="previewError">Q (25%)</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Estimated Print:</span>
+                                            <span class="info-value" id="previewPrint">4cm x 4cm</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="download-actions">
+                                    <button class="btn btn--primary" onclick="downloadQR('png')">
+                                        📥 Download PNG
+                                    </button>
+                                    <button class="btn btn--outline" onclick="downloadQR('svg')">
+                                        📥 Download SVG
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other tabs content would be here -->
+            <!-- For brevity, showing just the main generator tab -->
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/analytics.js"></script>
+</body>
+</html>
